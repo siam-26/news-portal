@@ -1,3 +1,9 @@
+body {
+    background-color: rgb(241, 241, 241);
+}
+
+
+
 span {
     background-color: rgb(152, 12, 152);
     color: white;
@@ -12,4 +18,19 @@ span {
 button:hover {
     color: rgb(152, 12, 152) !important;
 
+}
+
+#number-of-items-div {
+    height: 50px;
+    width: 100%;
+
+}
+
+.sort-by-view-btn {
+    background-color: rgb(152, 12, 152);
+    color: white;
+}
+
+.default-p {
+    background-color: white;
 }
