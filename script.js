@@ -47,11 +47,15 @@ const main_news = (data) => {
         </div>
 
         <div class="authorName-view ms-5 mt-5">
-            <img class="author-img" src="${value.author.img ? value.author.img : 'no data found'}">
-            <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
-            <span class="ms-5 ps-5"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span>
-            <i class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button"></i>
             
+        <img class="author-img" src="${value.author.img ? value.author.img : 'no data found'}">
+            
+            <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
+            
+            <span class="ms-5 ps-5"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span>
+            
+            <i onclick="news_details('${value._id}')" class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button"
+            data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
 
         </div>
         </div>
@@ -61,4 +65,20 @@ const main_news = (data) => {
     })
 }
 
+const news_details = (id) => {
+    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+        .then(res => res.json())
+        .then(data => details_on_modal(data.data[0]))
+        .catch(error => console.log(error));
+}
+const details_on_modal = (data) => {
+    const modal_container_div = document.getElementById('modal-container-div');
+
+    const title = document.getElementById('title');
+    title.innerText = `${data.title ? data.title : 'no data found'}`;
+
+    const details_news_text = document.getElementById('details-news-text');
+    details_news_text.innerText = `${data.details ? data.details : 'no data found'}`;
+
+}
 navbar_news_links_function('Breaking News');
