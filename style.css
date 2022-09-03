@@ -4,7 +4,7 @@ body {
 
 
 
-span {
+.span {
     background-color: rgb(152, 12, 152);
     color: white;
     padding: 4%;
@@ -33,4 +33,27 @@ button:hover {
 
 .default-p {
     background-color: white;
+}
+
+.author-img {
+    border-radius: 50%;
+    width: 5%;
+}
+
+
+
+.ellipsis-content {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    white-space: normal;
+    text-align: justify;
+}
+
+.details-icon-button:hover {
+    cursor: pointer;
+    color: rgb(152, 12, 152);
+    ;
 }
