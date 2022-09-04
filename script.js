@@ -52,11 +52,10 @@ const main_news = (data) => {
             
             <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
             
-            <span class="ms-5 ps-5"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span>
+            <span class="ms-5 ps-5"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span> 
             
-            <i onclick="news_details('${value._id}')" class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button"
-            data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
-
+            
+                <i onclick="news_details('${value._id}')" type="button" class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
         </div>
         </div>
         
@@ -65,20 +64,33 @@ const main_news = (data) => {
     })
 }
 
-const news_details = (id) => {
-    fetch(`https://openapi.programming-hero.com/api/news/${id}`)
+const news_details = (newsId) => {
+    fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
         .then(res => res.json())
-        .then(data => details_on_modal(data.data[0]))
+        .then(data => details_on_error(data.data[0]))
         .catch(error => console.log(error));
 }
-const details_on_modal = (data) => {
-    const modal_container_div = document.getElementById('modal-container-div');
-
+const details_on_error = (datas) => {
     const title = document.getElementById('title');
-    title.innerText = `${data.title ? data.title : 'no data found'}`;
+    title.innerText = `${datas.title ? datas.title : 'no title available'}`;
 
-    const details_news_text = document.getElementById('details-news-text');
-    details_news_text.innerText = `${data.details ? data.details : 'no data found'}`;
+    const thumbnail_img = document.getElementById('thumbnails-img');
+    thumbnail_img.innerHTML = `
+       <img class='rounded mx-auto d-block w-25' src='${datas.thumbnail_url ? datas.thumbnail_url : 'no images available'}'>`
 
+    const details = document.getElementById('details');
+    details.innerHTML =
+        `<p class="details-text">${datas.details ? datas.details : 'no news available'}</p>
+
+        <img class="author-details-section-img" src='${datas.author.img ? datas.author.img : ' img not available'}' >
+
+        <span class="fw-bold">Author: ${datas.author.name ? datas.author.name : 'not available'} </span>
+
+       <h6 class="ms-5 ps-3 mt-2">Published Date: ${datas.author.published_date ? datas.author.published_date : 'not available'} </h6>
+      <div class="ms-5 ps-3">
+       <h6 class="">Total View: <i class="fa-regular fa-eye"></i> ${datas.total_view ? datas.total_view : 'no data found'}M</h6>
+       </div>
+        `;
 }
-navbar_news_links_function('Breaking News');
+categories('01');
+navbar_news_links_function();
