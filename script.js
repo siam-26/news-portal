@@ -65,11 +65,10 @@ const main_news = (data) => {
             
         <img class="author-img" src="${value.author.img ? value.author.img : 'no data found'}">
             
-            <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
             
             <span class="ms-5 ps-5 total-view-main-news"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span> 
-            
-            
+            <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
+
                 <i onclick="news_details('${value._id}')" type="button" class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
         </div>
         </div>
@@ -99,13 +98,17 @@ const details_on_error = (datas) => {
     details.innerHTML =
         `<p class="details-text"><b>Details:</b> ${datas.details ? datas.details : 'no news available'}</p>
 
-        <img class="author-details-section-img" src='${datas.author.img ? datas.author.img : ' img not available'}' >
+        <h6 class=" mt-2">Rating Number: ${datas.rating.number ? datas.rating.number : 'not available'} </h6>
+
+        <h6 class="mt-2 pb-4">Rating Badge: ${datas.rating.badge ? datas.rating.badge : 'not available'} </h6>
+
+        <img class="author-details-section-img " src='${datas.author.img ? datas.author.img : ' img not available'}' >
 
         <span class="fw-bold">Author: ${datas.author.name ? datas.author.name : 'not available'} </span>
 
        <h6 class="ms-5 ps-3 mt-2">Published Date: ${datas.author.published_date ? datas.author.published_date : 'not available'} </h6>
       <div class="ms-5 ps-3">
-       <h6 class="">Total View: <i class="fa-regular fa-eye"></i> ${datas.total_view ? datas.total_view : 'no data found'}M</h6>
+       <h6 class="">Total View: <i class="fa-regular fa-eye"></i> ${datas.total_view ? datas.total_view : 'no data found'}</h6>
        </div>
         `;
 }
