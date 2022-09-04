@@ -66,8 +66,10 @@ const main_news = (data) => {
         <img class="author-img" src="${value.author.img ? value.author.img : 'no data found'}">
             
             
-            <span class="ms-5 ps-5 total-view-main-news"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span> 
+            
             <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
+
+            <span class="ms-5 ps-5 total-view-main-news"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span>
 
                 <i onclick="news_details('${value._id}')" type="button" class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
         </div>
