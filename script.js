@@ -1,4 +1,4 @@
-//Navbar news links
+//Second Navbar news links
 
 const navbar_news_links_function = () => {
     fetch('https://openapi.programming-hero.com/api/news/categories')
@@ -12,6 +12,7 @@ const setting_navbar_news_links = (data) => {
     const navbar_news_links_div = document.getElementById('navbar-news-links-div');
     data.forEach((value) => {
         const create_div = document.createElement('div');
+        create_div.classList.add('create-second-navbar-news-div')
         create_div.innerHTML = `
         <button onclick="categories('${value.category_id}')" type="button" class="btn text-muted ms-4 me-2">${value.category_name}</button>
         `
@@ -28,6 +29,7 @@ const categories = (category_id) => {
         .catch(error => console.log(error));
 }
 
+//main news
 const main_news = (data) => {
     const main_news_div = document.getElementById('main-news-div');
     main_news_div.innerHTML = '';
@@ -38,12 +40,12 @@ const main_news = (data) => {
         create_div.innerHTML = `
        
         <div class="thumbnail">
-            <img class="mt-5 mb-5 ps-5" src="${value.thumbnail_url ? value.thumbnail_url : 'no data found'}">
+            <img class="mt-5 mb-5 ps-5 thumbnail-img-main-news" src="${value.thumbnail_url ? value.thumbnail_url : 'no data found'}">
         </div>
-        <div class="mt-2">
-        <div class="mt-5 pt-4 ms-5 w-75">
-            <h5 class="fw-bold">${value.title ? value.title : 'no data found'}</h5>
-            <p class="text-muted ellipsis-content mt-2">${value.details ? value.details : 'no data found'}</p>
+        <div class="mt-2 content-container-div-main-news">
+        <div class="mt-5 pt-4 ms-5 w-75 content-div-main-news">
+            <h5 class="fw-bold title-main-news">${value.title ? value.title : 'no data found'}</h5>
+            <p class="text-muted mt-2 ellipsis-content">${value.details ? value.details : 'no data found'}</p>
         </div>
 
         <div class="authorName-view ms-5 mt-5">
@@ -52,7 +54,7 @@ const main_news = (data) => {
             
             <span class="text-secondary ms-1">${value.author.name ? value.author.name : 'no data found'}</span>
             
-            <span class="ms-5 ps-5"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span> 
+            <span class="ms-5 ps-5 total-view-main-news"> <i class="fa-regular fa-eye"></i> ${value.total_view ? value.total_view : 'no data found'}</span> 
             
             
                 <i onclick="news_details('${value._id}')" type="button" class="fa-solid fa-arrow-right-long ms-5 ps-5 details-icon-button" data-bs-toggle="modal" data-bs-target="#newsDetailsModal"></i>
@@ -80,7 +82,7 @@ const details_on_error = (datas) => {
 
     const details = document.getElementById('details');
     details.innerHTML =
-        `<p class="details-text">${datas.details ? datas.details : 'no news available'}</p>
+        `<p class="details-text"><b>Details:</b> ${datas.details ? datas.details : 'no news available'}</p>
 
         <img class="author-details-section-img" src='${datas.author.img ? datas.author.img : ' img not available'}' >
 
