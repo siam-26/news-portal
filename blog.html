@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body class="container">
+<body>
     <!-- Header Section -->
     <header class="container">
         <!-- First Navbar -->
@@ -46,40 +46,51 @@
     </header>
 
     <!--main section-->
+    <main class="container">
+        <ol class="mt-5">
+            <!--1-->
+            <li><b>Ques:</b>What are the differences between ver,let and const variable?<br>
+                <b>Ans:</b><b>var</b> variables can be updated and re-declared within its scope; <b>let</b> variables
+                can be
+                updated but not re-declared; <b>const</b>
+                variables can neither be updated nor re-declared.
+            </li>
+            <br><br>
 
-    <ol class="mt-5">
-        <!--1-->
-        <li><b>Ques:</b>What are the differences between ver,let and const variable?<br>
-            <b>Ans:</b><b>var</b> variables can be updated and re-declared within its scope; <b>let</b> variables can be
-            updated but not re-declared; <b>const</b>
-            variables can neither be updated nor re-declared.
-        </li>
-        <br><br>
+            <!--2-->
+            <li><b>Ques:</b>What are the differences between arrow function and regular function?<br>
+                <b>Ans:</b><b>Regular functions</b> created using function declarations or expressions are constructible
+                and
+                callable, Whereas the <b>arrow functions</b> are only callable and not constructible.
+            </li>
+            <br><br>
 
-        <!--2-->
-        <li><b>Ques:</b>What are the differences between arrow function and regular function?<br>
-            <b>Ans:</b><b>Regular functions</b> created using function declarations or expressions are constructible and
-            callable, Whereas the <b>arrow functions</b> are only callable and not constructible.
-        </li>
-        <br><br>
+            <!--3-->
+            <li><b>Ques:</b>What are the differences between map,forEach,filter & find?<br>
+                <b>Ans:</b>The main differences between them are,<b>forEach()</b> method just loop over the array and
+                executes the callback but not return anything.<b>filter()</b> method executes the callback and check its
+                return value.The <b>map()</b> method creates an entirely new array & returns the newly created array
+                according to the provided callback function.The <b>find()</b> method is used to find all the descendant
+                elements of the selected element.
+            </li>
+            <br><br>
 
-        <!--3-->
-        <li><b>Ques:</b>What are the differences between map,forEach,filter & find?<br>
-            <b>Ans:</b>The main differences between them are,<b>forEach()</b> method just loop over the array and
-            executes the callback but not return anything.<b>filter()</b> method executes the callback and check its
-            return value.The <b>map()</b> method creates an entirely new array & returns the newly created array
-            according to the provided callback function.The <b>find()</b> method is used to find all the descendant
-            elements of the selected element.
-        </li>
-        <br><br>
+            <!--4-->
+            <li><b>Ques:</b>Why do we use <b>template string?</b> <br>
+                <b>Ans:</b>Because <b>Template String</b> lets us insert/interpolate variables and expressions into
+                strings
+                without needing to concatenate like in older
+                versions of JavaScript.
+            </li>
+        </ol>
+    </main>
 
-        <!--4-->
-        <li><b>Ques:</b>Why do we use <b>template string?</b> <br>
-            <b>Ans:</b>Because <b>Template String</b> lets us insert/interpolate variables and expressions into strings
-            without needing to concatenate like in older
-            versions of JavaScript.
-        </li>
-    </ol>
+    <!-- footer section -->
+    <footer class="bg-white mt-5">
+        <div class="d-flex justify-content-center align-items-center pt-5 pb-4">
+            <p class="text-black-50 fw-bold">Copyright 2021 News Portal</p>
+        </div>
+    </footer>
 </body>
 
 </html>
