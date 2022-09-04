@@ -1,14 +1,17 @@
 //Second Navbar news links
 
 const navbar_news_links_function = () => {
+
     fetch('https://openapi.programming-hero.com/api/news/categories')
         .then(res => res.json())
         .then(data => setting_navbar_news_links(data.data.news_category))
         .catch(error => console.log(error))
+    //loading_spinner(true);
 
 }
 
 const setting_navbar_news_links = (data) => {
+
     const navbar_news_links_div = document.getElementById('navbar-news-links-div');
     data.forEach((value) => {
         const create_div = document.createElement('div');
@@ -31,8 +34,18 @@ const categories = (category_id) => {
 
 //main news
 const main_news = (data) => {
+    const items_found_category = document.getElementById('items-found-category');
+    items_found_category.innerText = `${data.length} items found`;
+
+
     const main_news_div = document.getElementById('main-news-div');
     main_news_div.innerHTML = '';
+
+    if (data.length === 0) {
+        return alert('No news available on this page.');
+    }
+
+
     data.forEach((value) => {
         const create_div = document.createElement('div');
         create_div.classList.add('container-div');
@@ -66,12 +79,14 @@ const main_news = (data) => {
     })
 }
 
+//details news on Modal
 const news_details = (newsId) => {
     fetch(`https://openapi.programming-hero.com/api/news/${newsId}`)
         .then(res => res.json())
         .then(data => details_on_error(data.data[0]))
         .catch(error => console.log(error));
 }
+//adding on modal
 const details_on_error = (datas) => {
     const title = document.getElementById('title');
     title.innerText = `${datas.title ? datas.title : 'no title available'}`;
@@ -93,6 +108,18 @@ const details_on_error = (datas) => {
        <h6 class="">Total View: <i class="fa-regular fa-eye"></i> ${datas.total_view ? datas.total_view : 'no data found'}M</h6>
        </div>
         `;
+}
+
+//loading spinner
+
+const loading_spinner = (isLoading) => {
+    const spinner = document.getElementById('spinner');
+    if (isLoading) {
+        return spinner.classList.remove('d-none');
+    }
+    else {
+        return spinner.classList.add('d-none');
+    }
 }
 categories('01');
 navbar_news_links_function();
